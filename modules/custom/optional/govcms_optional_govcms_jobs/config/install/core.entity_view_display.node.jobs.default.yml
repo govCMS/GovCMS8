@@ -4,8 +4,16 @@ dependencies:
   config:
     - field.field.node.jobs.body
     - field.field.node.jobs.field_attachments
+    - field.field.node.jobs.field_categories
+    - field.field.node.jobs.field_event_date
+    - field.field.node.jobs.field_event_location
+    - field.field.node.jobs.field_job_date_listed
+    - field.field.node.jobs.field_position_number
+    - field.field.node.jobs.field_proposed_deletion_date
     - node.type.jobs
   module:
+    - datetime
+    - datetime_range
     - field_layout
     - file
     - layout_discovery
@@ -34,6 +42,58 @@ content:
       use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
+    region: content
+  field_categories:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_event_date:
+    weight: 107
+    label: above
+    settings:
+      separator: '-'
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_event_location:
+    weight: 108
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_job_date_listed:
+    weight: 105
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_position_number:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_proposed_deletion_date:
+    weight: 106
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   links:
     weight: 100

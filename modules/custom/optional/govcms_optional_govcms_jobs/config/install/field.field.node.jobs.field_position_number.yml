@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_position_number
+    - node.type.jobs
+id: node.jobs.field_position_number
+field_name: field_position_number
+entity_type: node
+bundle: jobs
+label: 'Position Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

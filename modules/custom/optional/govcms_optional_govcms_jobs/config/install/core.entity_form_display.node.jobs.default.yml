@@ -4,9 +4,17 @@ dependencies:
   config:
     - field.field.node.jobs.body
     - field.field.node.jobs.field_attachments
+    - field.field.node.jobs.field_categories
+    - field.field.node.jobs.field_event_date
+    - field.field.node.jobs.field_event_location
+    - field.field.node.jobs.field_job_date_listed
+    - field.field.node.jobs.field_position_number
+    - field.field.node.jobs.field_proposed_deletion_date
     - node.type.jobs
   module:
     - content_moderation
+    - datetime
+    - datetime_range
     - field_layout
     - file
     - layout_discovery
@@ -42,6 +50,49 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    region: content
+  field_categories:
+    weight: 124
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_event_date:
+    weight: 127
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_event_location:
+    weight: 128
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_job_date_listed:
+    weight: 125
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_position_number:
+    weight: 123
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_proposed_deletion_date:
+    weight: 126
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   moderation_state:
     type: moderation_state_default

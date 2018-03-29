@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Job vacancies categories'
+vid: job_categories
+description: ''
+hierarchy: 0
+weight: 0

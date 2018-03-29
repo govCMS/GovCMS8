@@ -4,15 +4,20 @@ type: module
 core: 8.x
 dependencies:
   - content_moderation
+  - datetime
+  - datetime_range
   - field
   - field_layout
   - file
   - govcms_fields_attachment
+  - govcms_optional_govcms_event
   - layout_discovery
   - menu_ui
   - node
   - path
+  - taxonomy
   - text
   - user
+  - views
 version: 8.x-1.0-alpha2
 package: 'govCMS Optional'
