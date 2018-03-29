@@ -1,5 +1,5 @@
 name: Jobs
-description: 'Provides Jobs content type and related configuration. Use <em>Jobs</em> to reach your target audience directly. '
+description: 'Provides Jobs content type and related configuration.'
 type: module
 core: 8.x
 dependencies:
