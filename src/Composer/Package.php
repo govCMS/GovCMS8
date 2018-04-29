@@ -250,6 +250,7 @@ class Package {
       'drupal-library',
       'bower-asset',
       'npm-asset',
+      'library'
     ];
     return (
       in_array($package['type'], $package_types) &&
