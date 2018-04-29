@@ -141,8 +141,31 @@ class Package {
         break;
     }
     $info += $this->buildPackage($package);
+    // Core should always use git branch + revision, or patches won't apply
+    // correctly.
+    if ($package['type'] === 'drupal-core') {
+      // Composer downloads core from its subtree split on GitHub, but the
+      // packaging system will choke on that.
+      $info['download']['url'] = 'https://git.drupal.org/project/drupal.git';
+      // Derive the branch from the version string.
+      $info['download']['branch'] = preg_replace(
+        // 8.4.2 --> 8.4.x
+        ['/\.\d$/', '/-dev$/'],
+        // 8.5.x-dev --> 8.5.x
+        ['.x', NULL],
+        $package['version']
+      );
+      // We never want to specify a commit hash, regardless of whether this is
+      // a dev branch or tagged release.
+      unset($info['download']['revision']);
+      // But, if it is a tagged release (i.e., there's no -dev suffix in the
+      // version), we do want to specify that tag.
+      if (strpos($package['version'], '-dev') === FALSE) {
+        $info['download']['tag'] = $package['version'];
+      }
+    }
     // Dev versions should use git branch + revision, otherwise a tag is used.
-    if (strstr($package['version'], 'dev')) {
+    elseif (strstr($package['version'], 'dev')) {
       // 'dev-' prefix indicates a branch-alias. Stripping the dev prefix from
       // the branch name is sufficient.
       // @see https://getcomposer.org/doc/articles/aliases.md
@@ -154,14 +177,6 @@ class Package {
         $info['download']['branch'] = $package['version'];
       }
       $info['download']['revision'] = $package['source']['reference'];
-    }
-    // Core should always use git branch + revision, or patches won't apply
-    // correctly.
-    elseif ($package['type'] == 'drupal-core') {
-      $info['download']['url'] = 'https://git.drupal.org/project/drupal.git';
-      // 8.4.2 --> 8.4.x
-      $info['download']['branch'] = preg_replace('/\.\d$/', '.x', $package['version']);
-      $info['download']['revision'] = $package['version'];
     }
     // Any other type of package can use a standard Drupal version number.
     else {
@@ -257,6 +272,15 @@ class Package {
       array_key_exists($package['name'], $this->rootPackage->getRequires())
     );
   }
+  /**
+   * Determines if a package is a govCMS Theme.
+   *
+   * @param array $package
+   *   The package info.
+   *
+   * @return bool
+   *   TRUE if the package is an asset library, otherwise FALSE.
+   */
   protected function isgovCMSTheme (array $package) {
     $package_types = [
       'drupal-theme',
