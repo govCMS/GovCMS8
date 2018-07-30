@@ -17,6 +17,7 @@ dependencies:
   - govcms_search
   - image
   - layout_discovery
+  - link
   - menu_ui
   - node
   - panelizer
