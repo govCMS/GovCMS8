@@ -67,9 +67,9 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
+  rendered_item: {  }
 tracker_settings:
   default:
     indexing_order: fifo

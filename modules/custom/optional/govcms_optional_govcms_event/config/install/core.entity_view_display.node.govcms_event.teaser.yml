@@ -9,16 +9,23 @@ dependencies:
     - field.field.node.govcms_event.field_event_date
     - field.field.node.govcms_event.field_event_location
     - field.field.node.govcms_event.field_featured_image
+    - field.field.node.govcms_event.field_more_information
     - node.type.govcms_event
   module:
     - field_layout
     - layout_discovery
+    - panelizer
     - text
     - user
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings: {  }
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.govcms_event.teaser
 targetEntityType: node
 bundle: govcms_event
@@ -35,6 +42,8 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_attachments: true
   field_event_: true
@@ -42,3 +51,4 @@ hidden:
   field_event_date: true
   field_event_location: true
   field_featured_image: true
+  field_more_information: true
