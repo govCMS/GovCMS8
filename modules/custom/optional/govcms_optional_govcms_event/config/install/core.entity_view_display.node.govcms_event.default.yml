@@ -8,11 +8,13 @@ dependencies:
     - field.field.node.govcms_event.field_event_date
     - field.field.node.govcms_event.field_event_location
     - field.field.node.govcms_event.field_featured_image
+    - field.field.node.govcms_event.field_more_information
     - node.type.govcms_event
   module:
     - datetime_range
     - field_layout
     - layout_discovery
+    - link
     - panelizer
     - text
     - user

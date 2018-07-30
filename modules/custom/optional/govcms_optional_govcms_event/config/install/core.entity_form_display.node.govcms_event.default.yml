@@ -17,6 +17,7 @@ dependencies:
     - entity_browser
     - field_layout
     - layout_discovery
+    - link
     - path
     - text
 third_party_settings:
