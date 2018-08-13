@@ -17,6 +17,7 @@ dependencies:
   - node
   - panelizer
   - path
+  - simple_sitemap
   - text
   - user
 version: 8.x-1.0-alpha1
