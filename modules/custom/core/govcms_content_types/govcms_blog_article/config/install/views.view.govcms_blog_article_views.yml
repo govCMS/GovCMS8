@@ -236,6 +236,7 @@ display:
         pager: false
         empty: false
         css_class: false
+        header: false
       empty:
         node_listing_empty:
           id: node_listing_empty

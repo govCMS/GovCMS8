@@ -230,6 +230,7 @@ display:
         pager: false
         style: false
         row: false
+        header: false
       hide_attachment_summary: true
       css_class: 'views--layout views--layout--full-width'
       pager:
