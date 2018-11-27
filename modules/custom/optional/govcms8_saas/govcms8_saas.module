@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * General code for GovCMS SaaS module.
+ *
+ * If you're using PaaS then you don't really need this module, because most
+ * of the things that are enabled by this module can, and arguably should, be
+ * done in a custom module.
+ */
+
+/**
+ * Implements hook_ajax_render_alter().
+ *
+ * Allow the theme to alter the ajax render data, which can impact the visual
+ * display.
+ */
+function govcms8_saas_ajax_render_alter(array &$data) {
+
+  // Implemented by THEME_govcms8_saas_ajax_render_alter().
+  \Drupal::theme()->alter('govcms8_saas_ajax_render', $data);
+
+}

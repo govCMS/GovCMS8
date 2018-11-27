@@ -1,0 +1,7 @@
+name: GovCMS 8 SaaS Support
+type: module
+description: "Provide support for SaaS themes to enhance the Drupal experience in useful ways."
+package: GovCMS
+core: 8.x
+
+
