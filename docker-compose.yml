@@ -4,6 +4,7 @@ x-volumes:
   &default-volumes
     volumes:
       - files:/app/web/sites/default/files
+      - ./modules/custom:/app/web/modules/custom
 
 x-environment:
   &default-environment
