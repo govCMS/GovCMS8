@@ -33,6 +33,7 @@ projects[dropzonejs][type] = module
 projects[dropzonejs][version] = 2.0-alpha3
 projects[ds][type] = module
 projects[ds][version] = 3.1
+projects[ds][version] = 3.2
 projects[dynamic_entity_reference][type] = module
 projects[dynamic_entity_reference][version] = 1.6
 projects[embed][type] = module
