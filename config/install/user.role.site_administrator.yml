@@ -4,4 +4,4 @@ dependencies: {  }
 id:           site_administrator
 label:        'Site Administrator'
 weight:       4
-is_admin:     true
+is_admin:     null
