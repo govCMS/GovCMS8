@@ -53,9 +53,6 @@ settings:
       accordion_group:
         enabled: true
         weight: 14
-      custom_colors_modifier:
-        weight: 16
-        enabled: false
       custom_linear_gradient_modifier:
         weight: 17
         enabled: false

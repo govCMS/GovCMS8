@@ -65,9 +65,6 @@ settings:
       custom_linear_gradient_modifier:
         enabled: true
         weight: 17
-      custom_colors_modifier:
-        weight: 18
-        enabled: false
       padding_modifier:
         enabled: true
         weight: 18

@@ -24,5 +24,4 @@ content:
     third_party_settings: {  }
 hidden:
   field_mod_bc_bg_color_val: true
-  field_mod_h_background_color_val: true
   field_mod_transition_duration: true
