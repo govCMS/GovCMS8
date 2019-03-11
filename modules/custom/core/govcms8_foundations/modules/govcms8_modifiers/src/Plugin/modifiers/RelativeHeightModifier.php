@@ -7,6 +7,12 @@ use Drupal\modifiers\ModifierPluginBase;
 
 /**
  * Provides a Modifier to set the relative height on an element.
+ *
+ * @Modifier(
+ *   id = "relative_height_modifier",
+ *   label = @Translation("Relative Height Modifier"),
+ *   description = @Translation("Provides a Modifier to set the relative height on an element"),
+ * )
  */
 class RelativeHeightModifier extends ModifierPluginBase {
 
