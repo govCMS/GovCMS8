@@ -113,6 +113,7 @@ class InstallHelper implements ContainerInjectionInterface {
             $values['body'] = [
               'value' => $body,
               'format' => 'rich_text',
+              'moderation_state' => 'published', 
             ];
           }
         }
