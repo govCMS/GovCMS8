@@ -8,13 +8,12 @@ default:
     default:
       paths: [ %paths.base%/features ]
       contexts:
-      - FeatureContext
-      - Drupal\DrupalExtension\Context\DrupalContext
-      - Drupal\DrupalExtension\Context\MinkContext
-      - Drupal\DrupalExtension\Context\MarkupContext
-      - Drupal\DrupalExtension\Context\MessageContext
-      - IntegratedExperts\BehatScreenshotExtension\Context\ScreenshotContext
-
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - IntegratedExperts\BehatScreenshotExtension\Context\ScreenshotContext
+        - FeatureContext
   extensions:
     Behat\MinkExtension:
       goutte: ~
