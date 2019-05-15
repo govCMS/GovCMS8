@@ -68,6 +68,7 @@
         "drupal/metatag": "1.8",
         "drupal/modifiers": "1.2",
         "drupal/module_filter": "3.1",
+        "drupal/page_manager": "^4.0@beta",
         "drupal/panelizer": "4.1",
         "drupal/panels": "4.3",
         "drupal/paragraphs": "1.6",
