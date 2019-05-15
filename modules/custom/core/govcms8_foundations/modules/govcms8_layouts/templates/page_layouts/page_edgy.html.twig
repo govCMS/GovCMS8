@@ -13,16 +13,8 @@
 %}
 
 <div{{ attributes.addClass(classes) }}>
-  {% if content.header|render|striptags('<img>')|trim %}
-    <section class="page-layout__content-header-section">
-      <div class="container">
-        <div class="row">
-          <div class="page-layout__content-header">
-            {{ content.header }}
-          </div>
-        </div>
-      </div>
-    </section>
+  {% if content['#title'] %}
+    <h1 class="au-header-heading visually-hidden">{{ content['#title'] }}</h1>
   {% endif %}
   {% if content.content_top|render|striptags('<img>')|trim or content.content|render|striptags('<img>')|trim or content.content_bottom|render|striptags('<img>')|trim %}
     <section class="page-layout__content-section">
