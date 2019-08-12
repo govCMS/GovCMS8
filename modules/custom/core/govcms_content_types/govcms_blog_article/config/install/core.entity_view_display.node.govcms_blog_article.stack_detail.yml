@@ -14,7 +14,6 @@ dependencies:
   module:
     - ds
     - field_layout
-    - linked_field
     - panelizer
     - text
     - user
@@ -79,12 +78,7 @@ content:
     settings:
       view_mode: landscape
       link: false
-    third_party_settings:
-      linked_field:
-        linked: '1'
-        type: custom
-        destination: '[node:url]'
-        advanced: {  }
+    third_party_settings: {  }
 hidden:
   field_attachments: true
   field_blog_article_categories: true
