@@ -17,7 +17,6 @@ dependencies:
     - datetime
     - ds
     - field_layout
-    - linked_field
     - panelizer
     - user
 third_party_settings:
@@ -93,12 +92,7 @@ content:
     settings:
       view_mode: landscape
       link: false
-    third_party_settings:
-      linked_field:
-        linked: '1'
-        type: custom
-        destination: '[node:url]'
-        advanced: {  }
+    third_party_settings: {  }
 hidden:
   body: true
   field_attachments: true
