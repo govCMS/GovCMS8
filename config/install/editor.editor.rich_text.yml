@@ -25,6 +25,7 @@ settings:
             - Superscript
             - Subscript
             - Format
+            - Styles
         -
           name: Links
           items:
@@ -49,7 +50,7 @@ settings:
             - Source
   plugins:
     stylescombo:
-      styles: ''
+      styles: "div.au-table__wrapper|Responsive table\r\ntable.au-table|Table\r\ntable.au-table.au-table--striped|Table striped\r\ncaption.au-table__caption|Table caption\r\ntr.au-table__row|Table row\r\nthead.au-table__head|Table head\r\nth.au-table__header|Th cell\r\nth.au-table__header.au-table__header--numeric|Th numeric\r\nth.au-table__header.au-table__header--width-10|Th width 10%\r\nth.au-table__header.au-table__header--width-20|Th width 20%\r\nth.au-table__header.au-table__header--width-25|Th width 25%\r\nth.au-table__header.au-table__header--width-33|Th width 33%\r\nth.au-table__header.au-table__header--width-50|Th width 50%\r\nth.au-table__header.au-table__header--width-75|Th width 75%\r\ntbody.au-table__body|Table body\r\ntd.au-table__cell|Table cell\r\ntd.au-table__cell.au-table__cell--numeric|Td numeric\r\n"
     drupallink:
       linkit_enabled: true
       linkit_profile: default
