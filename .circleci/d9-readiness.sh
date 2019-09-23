@@ -31,5 +31,5 @@ for module in web/modules/contrib/*; do
     fi
 done
 
-WITH_SUMMARY=(cat "${LOG}" | grep "[ ]*\[" ; cat "${LOG}")
+WITH_SUMMARY=`cat "${LOG}" | grep "[ ]*\[" ; cat "${LOG}"`
 echo "$WITH_SUMMARY" > "${LOG}"
