@@ -130,6 +130,10 @@
             "drupal/config_ignore": {
                 "Offset error within IgnoreFilter::activeReadMultiple() - https://www.drupal.org/project/config_ignore/issues/2972302": "https://www.drupal.org/files/issues/2018-07-31/offset-error-within-2972302-13.patch"
             },
+	    "drupal/context": {
+                "2976587 - Cache collision, block configuration not respected - use same menu block with different levels":
+                "https://www.drupal.org/files/issues/2018-05-31/context-cache_collision_block_configuration_not_respected-2976587-2.patch"
+            },
             "drupal/panelizer": {
               "PanelizerWizardContextForm calls parent constructor without enough arguments under CTools 3.1 - https://www.drupal.org/project/panelizer/issues/3031671": "https://www.drupal.org/files/issues/2019-04-03/3031671-8.patch"
             },
