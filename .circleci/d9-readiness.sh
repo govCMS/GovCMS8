@@ -10,12 +10,12 @@ rm -f "${LOG}" && touch "${LOG}"
 
 set +e
 echo echo -e "\nRUNNING DEPRECATION TEST FOR: GovCMS Profile"
-vendor/bin/drupal-check --no-progress web/profiles/contrib/govcms > "${LOG}"
+vendor/bin/drupal-check --no-progress web/profiles/contrib/govcms > "${LOG}" | tee "${LOG}"
 set -e
 
 for module in web/modules/contrib/*; do
     if [ -d "${module}" ]; then
-        echo -e "\nRUNNING DEPRECATION TEST FOR: ${module}"
+        echo -e "\nRUNNING DEPRECATION TEST FOR: ${module}" | tee "${LOG}"
         set +e
         vendor/bin/drupal-check --no-progress "${module}" >> "${LOG}"
         set -e
