@@ -31,17 +31,17 @@ jobs:
           name: Install site
           command: ahoy -v install -- install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL
       - run:
+          name: Check Drupal 9 deprecations
+          command: |
+            - docker cp .circleci/d9-readiness.sh $(docker-compose -p govcms8 ps -q test):/app/d9-readiness.sh
+            - docker-compose exec -T test /app/d9-readiness.sh
+            - docker cp $(docker-compose -p govcms8 ps -q test):/app/d9-readiness.log /tmp/artifacts/d9-readiness.log
+      - run:
           name: Lint code
           command: ahoy -v lint || true
       - run:
           name: Run Behat tests with rerun
           command: ahoy test-behat -- --format=progress_fail || ahoy test-behat -- --format=progress_fail --rerun
-      - run:
-          name: Check Drupal 9 deprecations
-          command: |
-            - docker cp .circleci/d9-readiness.sh $(docker-compose -p govcms8 ps -q test):/app/d9-readiness.sh
-            - docker-compose exec test -T /app/d9-readiness.sh
-            - docker cp $(docker-compose -p govcms8 ps -q test):/app/d9-readiness.log /tmp/artifacts/d9-readiness.log
       - run:
           name: Copy artifacts
           command: mkdir -p /tmp/artifacts/behat && docker cp $(docker-compose -p govcms8 ps -q test):/app/tests/behat/screenshots /tmp/artifacts/behat
