@@ -41,7 +41,7 @@ jobs:
           command: |
             docker cp .circleci/d9-readiness.sh $(docker-compose -p govcms8 ps -q test):/app/d9-readiness.sh
             docker-compose exec -T test /app/d9-readiness.sh
-            docker cp $(docker-compose -p govcms8 ps -q test):/app/d9-readiness.log /tmp/artifacts/d9-readiness.log
+            mkdir -p /tmp/artifacts && docker cp $(docker-compose -p govcms8 ps -q test):/app/d9-readiness.log /tmp/artifacts/d9-readiness.log
       - run:
           name: Lint code
           command: docker-compose exec -T test lint-theme || true
