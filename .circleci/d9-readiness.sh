@@ -30,3 +30,6 @@ for module in web/modules/contrib/*; do
         set -e
     fi
 done
+
+WITH_SUMMARY=(cat "${LOG}" | grep "[ ]*\[" ; cat "${LOG}")
+echo "$WITH_SUMMARY" > "${LOG}"
