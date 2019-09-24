@@ -2,15 +2,22 @@
 IFS=$'\n\t'
 set -euo pipefail
 
+##
+# Test for deprecated code in GovCMS profile, themes, and its contrib.
+# @see https://github.com/mglaman/drupal-check <-- we're using this here.
+# @see https://github.com/drupal8-rector/drupal8-rector
+# @see https://www.drupal.org/project/upgrade_status
+
 LOG=/app/d9-readiness.log
 
 composer -n require mglaman/drupal-check
 rm -f web/profiles/contrib/govcms/composer.json
 rm -f "${LOG}" && touch "${LOG}"
 
+echo -e " [💥] GovCMS Distribution Drupal 9 Deprecation Testing log [💥]"
 echo -e "\n [PROFILE] web/profiles/contrib/govcms" | tee -a "${LOG}"
 set +e
-vendor/bin/drupal-check --no-progress web/profiles/contrib/govcms > "${LOG}" | tee -a "${LOG}"
+vendor/bin/drupal-check --no-progress web/profiles/contrib/govcms >> "${LOG}"
 set -e
 
 for theme in web/themes/contrib/*; do
