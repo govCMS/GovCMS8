@@ -14,7 +14,7 @@ composer -n require mglaman/drupal-check
 rm -f web/profiles/contrib/govcms/composer.json
 rm -f "${LOG}" && touch "${LOG}"
 
-echo -e " [💥] GovCMS Distribution Drupal 9 Deprecation Testing log [💥]"
+echo -e "\n [💥] GovCMS Distribution Drupal 9 Deprecation Testing log [💥]" | tee -a "${LOG}"
 echo -e "\n [PROFILE] web/profiles/contrib/govcms" | tee -a "${LOG}"
 set +e
 vendor/bin/drupal-check --no-progress web/profiles/contrib/govcms >> "${LOG}"
