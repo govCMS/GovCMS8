@@ -30,10 +30,6 @@ services:
         - wget -O /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar && chmod +x /usr/local/bin/drush
         - wget -O /usr/local/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64" && chmod +x /usr/local/bin/jq
 
-        # Stub out the Drupal webroot.
-        - composer create-project -n --no-install govcms/govcms8-project /var/govcms
-        - ln -snf "/var/govcms/docroot" "${DOCROOT}"
-
         # Clean up.
         - apt-get autoclean && apt-get clean
 
@@ -44,12 +40,16 @@ services:
       # Commands when building a new branch/PR update.
       build:
         # Add a "tugboat-latest" branch we can reference via composer in our /var/govcms/ project.
+        - git branch -D tugboat-latest || true
         - git checkout -b tugboat-latest
 
         # Tell the GovCMS project to use this "tugboat-latest" tag and the GovCMS satis.
         # @todo remove references to satis once upstreams are all using satis.
+        - rm -Rf /var/govcms
+        - composer create-project -n --no-install govcms/govcms8-project /var/govcms
         - cd /var/govcms && cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"},"packagist.org":false}' | tee composer.json
         - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
+        - mkdir -p /var/govcms/docroot && ln -snfF "/var/govcms/docroot" "${DOCROOT}"
 
         # Prepare for install.
         - cp "${TUGBOAT_ROOT}/.tugboat/settings.php" /var/govcms/docroot/sites/default/
@@ -60,5 +60,6 @@ services:
 
         # Install the site.
         - composer --working-dir=/var/govcms update
+        -
         - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
         - cd /var/govcms && drush -r /var/govcms/docroot pm-enable govcms8_default_content -y
