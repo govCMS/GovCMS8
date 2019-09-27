@@ -101,19 +101,9 @@
         "symfony/phpunit-bridge": "^3.4.6"
     },
     "require-dev": {
-        "grasmash/drupal-security-warning": "^1.1",
-        "phing/phing": "^2.16"
+        "grasmash/drupal-security-warning": "^1.1"
     },
     "extra": {
-        "drupal-scaffold": {
-            "initial": {
-                "sites/default/default.services.yml": "sites/default/services.yml",
-                "sites/default/default.settings.php": "sites/default/settings.php"
-            },
-            "excludes": [
-                "sites/development.services.yml"
-            ]
-        },
         "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
@@ -155,7 +145,6 @@
         }
     },
     "config": {
-        "bin-dir": "bin/",
         "sort-packages": true,
         "optimize-autoloader": true
     },
@@ -164,17 +153,10 @@
         "drush/drush": "<8.1.10"
     },
     "scripts": {
-        "post-install-cmd": [
-            "@composer drupal-scaffold",
-            "@composer push"
-        ],
         "post-update-cmd": [
-            "@composer push",
             "@composer package"
         ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "package": "govCMS\\Core\\Composer\\Package::execute",
-        "push": "./bin/phing push",
         "nuke": "rm -r -f composer.lock bin docroot vendor"
     },
     "suggest": {
