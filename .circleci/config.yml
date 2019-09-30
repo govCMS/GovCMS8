@@ -26,10 +26,10 @@ jobs:
           name: Setup the Composer project
           command: |
             # Create a workspace for building a project.
-            composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
+            composer create-project -n --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
             git checkout -b ref-"${CIRCLE_SHA1}"
             cd /var/govcms
-            cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${CIRCLE_WORKING_DIRECTORY}"'"},"packagist.org":false}' | tee composer.json
+            cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"ci":{"type":"path","url":"'"${CIRCLE_WORKING_DIRECTORY}"'"},"packagist.org":false}' | tee composer.json
             composer require govcms/govcms:dev-ref-"${CIRCLE_SHA1}" --ignore-platform-reqs
       - run:
           name: Build project

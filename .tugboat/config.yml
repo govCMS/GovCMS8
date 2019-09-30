@@ -28,9 +28,10 @@ services:
         - docker-php-ext-install opcache bz2 zip
         - a2enmod headers rewrite
         - wget -O /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar && chmod +x /usr/local/bin/drush
+        # @todo remove jq once upstreams are all using govcms satis.
         - wget -O /usr/local/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64" && chmod +x /usr/local/bin/jq
 
-        # Clean up.
+        # Clean up. This keeps image storage tighter on Tugboat.
         - apt-get autoclean && apt-get clean
 
       # Commands when refreshing an existing preview.
@@ -63,8 +64,5 @@ services:
         - cd /var/govcms && drush -r "${DOCROOT}" site:install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
         - cd /var/govcms && drush -r "${DOCROOT}" pm:enable govcms8_default_content -y
 
-        # Cuts down on image size, makes initial preview loading slower.
+        # Cuts down on image size, although makes initial preview loading slower.
         - cd /var/govcms && drush -r "${DOCROOT}" cr -y
-
-
-
