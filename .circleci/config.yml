@@ -24,7 +24,7 @@ jobs:
           command: docker network prune -f && docker network inspect amazeeio-network >/dev/null || docker network create amazeeio-network
       - run:
           name: Setup the Composer project workspace
-          command: composer create-project -n --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
+          command: composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-paas-wip /var/govcms
       - run:
           name: Update the Composer project to use local govcms/govcsm code
           command: |
