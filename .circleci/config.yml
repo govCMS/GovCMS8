@@ -10,18 +10,33 @@ jobs:
           DEPLOY_BRANCH: 1.x
     steps:
       - checkout
-      - run:
-          name: Docker-compose validate
-          command: docker-compose config -q
-      - run:
-          name: Update codebase to follow CI configuration
-          command: |
-            sed -i -e "/###/d" docker-compose.yml
-            cp .env.default .env
+#      - run:
+#          name: Docker-compose validate
+#          command: docker-compose config -q
+#      - run:
+#          name: Update codebase to follow CI configuration
+#          command: |
+#            sed -i -e "/###/d" docker-compose.yml
+#            cp .env.default .env
       - setup_remote_docker
       - run:
           name: Start amazeeio-network
           command: docker network prune -f && docker network inspect amazeeio-network >/dev/null || docker network create amazeeio-network
+      - run:
+          name: Setup the project
+          command: |
+            print env
+#            # Create a workspace for building a project.
+#            composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
+#            git checkout -b circleci-testing
+#            cd /var/govcms
+#            cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"},"packagist.org":false}' | tee composer.json
+#
+#
+#        - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
+#        - ln -snf "/var/govcms/docroot" "${DOCROOT}"
+#
+
       - run:
           name: Build project
           command: |
