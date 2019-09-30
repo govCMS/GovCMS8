@@ -3,7 +3,7 @@
 $databases = [];
 
 $config_directories = array(
-  CONFIG_SYNC_DIRECTORY => '/var/lib/tugboat/config/sync',
+  CONFIG_SYNC_DIRECTORY => 'sites/default/files/sync',
 );
 
 $settings['hash_salt'] = 'djfu983roawei90tk3;mva9023i9523';
@@ -30,3 +30,10 @@ $databases['default']['default'] = array (
 if (PHP_SAPI === 'cli') {
   ini_set('memory_limit', '256M');
 }
+
+$settings['trusted_host_patterns'] = ['.*'];
+
+$config['system.logging']['error_level'] = 'verbose';
+error_reporting(E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
