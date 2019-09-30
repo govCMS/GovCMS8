@@ -23,10 +23,11 @@ jobs:
           name: Start amazeeio-network
           command: docker network prune -f && docker network inspect amazeeio-network >/dev/null || docker network create amazeeio-network
       - run:
-          name: Setup the Composer project
+          name: Setup the Composer project workspace
+          command: composer create-project -n --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
+      - run:
+          name: Update the Composer project to use local govcms/govcsm code
           command: |
-            # Create a workspace for building a project.
-            composer create-project -n --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
             git checkout -b ref-"${CIRCLE_SHA1}"
             cd /var/govcms
             cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"ci":{"type":"path","url":"'"${CIRCLE_WORKING_DIRECTORY}"'"},"packagist.org":false}' | tee composer.json
