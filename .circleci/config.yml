@@ -23,52 +23,39 @@ jobs:
           name: Start amazeeio-network
           command: docker network prune -f && docker network inspect amazeeio-network >/dev/null || docker network create amazeeio-network
       - run:
-          name: Setup the project
+          name: Setup the Composer project
           command: |
-            printenv
-            pwd
-#            # Create a workspace for building a project.
-#            composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
-#            git checkout -b circleci-testing
-#            cd /var/govcms
-#            cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"},"packagist.org":false}' | tee composer.json
-#
-#
-#        - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
-#        - ln -snf "/var/govcms/docroot" "${DOCROOT}"
-#
-
+            # Create a workspace for building a project.
+            composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
+            git checkout -b ref-"${CIRCLE_SHA1}"
+            cd /var/govcms
+            cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${CIRCLE_WORKING_DIRECTORY}"'"},"packagist.org":false}' | tee composer.json
+            composer require govcms/govcms:dev-ref-"${CIRCLE_SHA1}"
       - run:
           name: Build project
+          working_directory: /var/govcms
           command: |
             ahoy -v build
-            docker-compose exec test dockerize -wait tcp://mariadb:3306 -timeout 1m
+            # docker-compose exec test dockerize -wait tcp://mariadb:3306 -timeout 1m
       - run:
           name: Install site
+          working_directory: /var/govcms
           command: ahoy -v install -- install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL
       - run:
           name: Lint code
+          working_directory: /var/govcms
           command: ahoy -v lint || true
       - run:
           name: Run Behat tests with rerun
+          working_directory: /var/govcms
           command: ahoy test-behat -- --format=progress_fail || ahoy test-behat -- --format=progress_fail --rerun
       - run:
           name: Copy artifacts
+          working_directory: /var/govcms
           command: mkdir -p /tmp/artifacts/behat && docker cp $(docker-compose -p govcms8 ps -q test):/app/tests/behat/screenshots /tmp/artifacts/behat
           when: always
       - store_artifacts:
           path: /tmp/artifacts
-      - run:
-          name: Push Docker images to Dockerhub
-          command: |
-            if [ "${DEPLOY_ANY_BRANCH}" != "" ] || [ "${CIRCLE_BRANCH}" == "${DEPLOY_BRANCH}" ] || [ ! -z ${CIRCLE_TAG} ]; then
-              echo "IMAGE_VERSION_TAG=$CIRCLE_TAG">>.env
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              export $(grep -v '^#' .env | xargs)
-              ahoy push
-            else
-              echo "Skipping deployment"
-            fi
 workflows:
   version: 2
   main:
