@@ -26,6 +26,7 @@ jobs:
           name: Setup the project
           command: |
             printenv
+            pwd
 #            # Create a workspace for building a project.
 #            composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-master /var/govcms
 #            git checkout -b circleci-testing
