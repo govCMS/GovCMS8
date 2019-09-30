@@ -30,7 +30,7 @@ jobs:
             git checkout -b ref-"${CIRCLE_SHA1}"
             cd /var/govcms
             cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${CIRCLE_WORKING_DIRECTORY}"'"},"packagist.org":false}' | tee composer.json
-            composer require govcms/govcms:dev-ref-"${CIRCLE_SHA1}"
+            composer require govcms/govcms:dev-ref-"${CIRCLE_SHA1}" --ignore-platform-reqs
       - run:
           name: Build project
           working_directory: /var/govcms
