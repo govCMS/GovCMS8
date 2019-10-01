@@ -3,41 +3,55 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: integratedexperts/ci-builder
+      - image: quay.io/govcms/govcms-ci
         environment:
           COMPOSER_ALLOW_SUPERUSER: 1
           COMPOSE_PROJECT_NAME: govcms8
           DEPLOY_BRANCH: 1.x
     steps:
       - checkout
-#      - run:
-#          name: Docker-compose validate
-#          command: docker-compose config -q
-#      - run:
-#          name: Update codebase to follow CI configuration
-#          command: |
-#            sed -i -e "/###/d" docker-compose.yml
-#            cp .env.default .env
       - setup_remote_docker
       - run:
           name: Start amazeeio-network
           command: docker network prune -f && docker network inspect amazeeio-network >/dev/null || docker network create amazeeio-network
       - run:
-          name: Setup the Composer project workspace
-          command: composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-paas-wip /var/govcms
-      - run:
-          name: Update the Composer project to use local govcms/govcsm code
+          name: Prepare the workspace with scaffold project
           command: |
-            git checkout -b ref-"${CIRCLE_SHA1}"
-            cd /var/govcms
-            cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"ci":{"type":"path","url":"'"${CIRCLE_WORKING_DIRECTORY}"'"},"packagist.org":false}' | tee composer.json
-            composer require govcms/govcms:dev-ref-"${CIRCLE_SHA1}" --ignore-platform-reqs
+            composer create-project -n --no-install --repository=https://satis.govcms.gov.au/projects govCMS/govCMS-project:dev-paas-wip /var/govcms
+            git checkout -b latest-distro-package-"${CIRCLE_SHA1}"
+            cp -r "${CIRCLE_WORKING_DIRECTORY}" "/var/govcms/latest-distro-package"
+            composer -n require govcms/govcms:dev-latest-distro-package-"'"${CIRCLE_SHA1}"'"
       - run:
-          name: Build project
+          name: Docker build
           working_directory: /var/govcms
           command: |
-            ahoy -v build
+            docker-compose up -d mariadb
+            docker-compose up -d cli
+
+
+            ls -la
+            ls -la /app
+            ls -la /var/govcms
+            # docker-compose ps
+            # ahoy -v build
+            docker-compose exec -T cli sh -c 'ls -la /app'
+            docker-compose ps
+            #docker-compose exec -T php sh -c 'ls -l /app'
+            #docker-compose exec -T test sh -c 'ls -la /app'
+            #docker-compose exec -T nginx sh -c 'ls -l /app'
             # docker-compose exec test dockerize -wait tcp://mariadb:3306 -timeout 1m
+      - run:
+          name: Update the Composer scaffold project to use the distro being tested
+          working_directory: /var/govcms
+          command: |
+            # Directory is mounted into the container.
+            touch test.txt
+            ls -la
+            docker-compose exec -T cli bash -c 'ls -la /app'
+            docker ps
+            cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"ci":{"type":"path","url":"latest-package"},"packagist.org":false}' | tee composer.json
+            docker-compose exec -T cli bash -c 'composer -n require govcms/govcms:dev-latest-package-"'"${CIRCLE_SHA1}"'" --ignore-platform-reqs'
+            docker volume ls
       - run:
           name: Install site
           working_directory: /var/govcms
