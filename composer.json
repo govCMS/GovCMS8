@@ -146,6 +146,9 @@
             },
             "drupal/google_analytics": {
                "Fatal error when there is a view with the path search/node":  "https://www.drupal.org/files/issues/2018-06-18/patch_google_analytics.patch"
+            },
+            "drupal/search_api": {
+                "Speed up item tracking for large sites": "https://gist.githubusercontent.com/steveworley/3c57c853e4410fdbbbbaa8acdec71bc5/raw/fa055d5133aa9e7f4bfd9a684115372285ebe241/3013663-17-raw_sql_query_for_tracking_with_replica.patch"
             }
         }
     },
