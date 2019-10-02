@@ -48,8 +48,8 @@ services:
         # @todo remove references to satis once upstreams are all using satis.
         - rm -Rf /var/govcms
         - composer create-project -n --no-install govcms/govcms8-project /var/govcms
-        # Don't use GovCMS satis as it won't allow new module version to be tested.
-        # - cd /var/govcms && cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"},"packagist.org":false}' | tee composer.json
+        # Add local and hence latest govcms/govcms as repo source.
+        - cd /var/govcms && cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"drupal":{"type":"composer", "url": "https://packages.drupal.org/8"},"local":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"}}' | tee composer.json
         - composer --working-dir=/var/govcms require zaporylie/composer-drupal-optimizations  govcms/govcms:dev-tugboat-latest
         - ln -snf "/var/govcms/docroot" "${DOCROOT}"
 
