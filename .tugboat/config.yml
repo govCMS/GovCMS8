@@ -49,7 +49,7 @@ services:
         - rm -Rf /var/govcms
         - composer create-project -n --no-install govcms/govcms8-project /var/govcms
         # Add local and hence latest govcms/govcms as repo source.
-        - cd /var/govcms && cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"drupal":{"type":"composer", "url": "https://packages.drupal.org/8"},"local":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"}}' | tee composer.json
+        - cd /var/govcms && cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"drupal":{"type":"composer","url":"https://packages.drupal.org/8"},"local":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"}}' | tee composer.json
         - composer --working-dir=/var/govcms require zaporylie/composer-drupal-optimizations  govcms/govcms:dev-tugboat-latest
         - ln -snf "/var/govcms/docroot" "${DOCROOT}"
 
