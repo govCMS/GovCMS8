@@ -50,7 +50,7 @@ services:
         - composer create-project -n --no-install govcms/govcms8-project /var/govcms
         # Add local and hence latest govcms/govcms as repo source.
         - composer --working-dir=/var/govcms config repositories.local path "${TUGBOAT_ROOT}"
-        - composer -d --working-dir=/var/govcms require zaporylie/composer-drupal-optimizations govcms/govcms:dev-tugboat-latest
+        - composer -vvv --working-dir=/var/govcms require zaporylie/composer-drupal-optimizations govcms/govcms:dev-tugboat-latest
         - ln -snf "/var/govcms/docroot" "${DOCROOT}"
 
         # Prepare for install.
