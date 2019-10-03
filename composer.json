@@ -97,12 +97,12 @@
         "drupal/webform": "5.1",
         "oomphinc/composer-installers-extender": "^1.1",
         "swiftmailer/swiftmailer": "5.4.12",
-        "symfony/phpunit-bridge": "^3.4.6"
+        "symfony/phpunit-bridge": "^3.4.6",
+        "zaporylie/composer-drupal-optimizations": "^1.1"
     },
     "require-dev": {
         "grasmash/drupal-security-warning": "^1.1",
-        "phing/phing": "^2.16",
-        "zaporylie/composer-drupal-optimizations": "^1.1"
+        "phing/phing": "^2.16"
     },
     "extra": {
         "drupal-scaffold": {
