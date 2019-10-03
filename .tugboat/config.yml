@@ -44,11 +44,9 @@ services:
         - git branch -D tugboat-latest || true
         - git checkout -b tugboat-latest
 
-        # Tell the GovCMS project to use this "tugboat-latest" tag and the GovCMS satis.
-        # @todo remove references to satis once upstreams are all using satis.
+        # Tell the GovCMS project to use this "tugboat-latest" tag above to build GovCMS distro in the scaffold.
         - rm -Rf /var/govcms
         - composer create-project -n --no-install govcms/govcms8-project /var/govcms
-        # Add local and hence latest govcms/govcms as repo source.
         - composer --working-dir=/var/govcms config repositories.local path "${TUGBOAT_ROOT}"
         - composer --profile --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
         - ln -snf "/var/govcms/docroot" "${DOCROOT}"
