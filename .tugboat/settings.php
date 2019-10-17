@@ -23,6 +23,8 @@ $settings['file_scan_ignore_directories'] = [
   'bower_components',
 ];
 
+$settings['file_private_path'] = '/var/govcms/docroot/sites/default/files/private';
+
 $settings['entity_update_batch_size'] = 50;
 
 $databases['default']['default'] = array (
