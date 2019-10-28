@@ -9,6 +9,11 @@ distribution:
   install:
     theme:              govcmsinstall
 
+# Modules to install to support the profile.
+install:
+  - media
+  - media_library
+
 dependencies:
   # Drupal Core modules
   - block_content
