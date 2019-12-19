@@ -4,3 +4,17 @@
  * @file
  * Contains install and update functions.
  */
+
+/**
+ * Implement hook_archiver_info_alt()
+ * 
+ */
+function govcms_security_archiver_info_alter(&$info) {
+  // There is a critical security update for Drupal 8.8.0 and older. 
+  // @See https://www.drupal.org/sa-core-2019-012.
+  // Until the Drupal core is updated to 8.8.1 or later version, all tar archive file is banned from uploading.
+  if (version_compare(\Drupal::VERSION, '8.8.1', '<')) {
+    // Remove all extensions allowed.
+    $info['Tar']['extensions'] = [];
+  }
+}
