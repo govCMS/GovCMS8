@@ -80,7 +80,7 @@
         "drupal/pathauto": "1.6.0",
         "drupal/permissions_by_term": "2.12",
         "drupal/recaptcha": "2.4",
-        "drupal/redirect": "1.4",
+        "drupal/redirect": "1.5",
         "drupal/restui": "1.16.0",
         "drupal/robotstxt": "1.2",
         "drupal/scheduled_transitions": "1.0.0-rc1",
