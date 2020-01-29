@@ -42,7 +42,7 @@
         "drupal/core-recommended": "8.8.1",
         "drupal/ctools": "3.2.0",
         "drupal/diff": "1.0-rc2",
-        "drupal/devel": "2.0",
+        "drupal/devel": "2.1",
         "drupal/dropzonejs": "2.0.0-alpha3",
         "drupal/ds": "3.2",
         "drupal/dynamic_entity_reference": "1.7.0",
@@ -131,6 +131,10 @@
         "patches": {
             "drupal/config_ignore": {
                 "Offset error within IgnoreFilter::activeReadMultiple() - https://www.drupal.org/project/config_ignore/issues/2972302": "https://www.drupal.org/files/issues/2018-07-31/offset-error-within-2972302-13.patch"
+            },
+            "drupal/devel": {
+                "Replace deprecated entity_* calls with proper calls to the entity api - https://www.drupal.org/project/config_ignore/issues/3044234": "https://www.drupal.org/files/issues/2019-05-12/3044234-6.patch",
+                "Fix text on title when generate content - https://www.drupal.org/project/config_ignore/issues/2714659": "https://www.drupal.org/files/issues/2019-06-12/Fix-text-on-title-when-generate-content-2714659-12.patch"
             },
             "drupal/panelizer": {
               "PanelizerWizardContextForm calls parent constructor without enough arguments under CTools 3.1 - https://www.drupal.org/project/panelizer/issues/3031671": "https://www.drupal.org/files/issues/2019-04-03/3031671-8.patch"
