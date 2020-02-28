@@ -10,7 +10,6 @@ set -euo pipefail
 
 LOG=/app/d9-readiness.log
 
-composer -n require mglaman/drupal-check
 rm -f web/profiles/contrib/govcms/composer.json
 rm -f "${LOG}" && touch "${LOG}"
 
@@ -33,7 +32,7 @@ for module in web/modules/contrib/*; do
     if [ -d "${module}" ]; then
         echo -e "\n [MODULE] ${module}" | tee -a "${LOG}"
         set +e
-        vendor/bin/drupal-check --no-progress "${module}" >> "${LOG}"
+        drush en -y "$(basename ${module})"
         set -e
     fi
 done
