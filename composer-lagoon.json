@@ -28,6 +28,8 @@
         "drupal/core-recommended": "8.8.1",
         "drush/drush": "^9.0.0",
         "govcms/govcms": "*",
+        "mglaman/drupal-check": "dev-master",
+        "drupal/upgrade_status": "^2.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
