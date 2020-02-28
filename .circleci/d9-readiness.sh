@@ -32,7 +32,7 @@ for module in web/modules/contrib/*; do
     if [ -d "${module}" ]; then
         echo -e "\n [MODULE] ${module}" | tee -a "${LOG}"
         set +e
-        drush en -y "$(basename ${module})"
+        vendor/bin/drupal-check --no-progress "${module}" >> "${LOG}"
         set -e
     fi
 done
