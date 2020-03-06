@@ -42,7 +42,7 @@ widgets:
       upload_location: 'public://'
       multiple: true
       submit_text: 'Select files'
-      extensions: 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp'
+      extensions: 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp'
     uuid: d611eac6-3c64-4343-8ac9-4b2068cfe687
     weight: -9
     label: upload
