@@ -91,7 +91,11 @@
         "drupal/robotstxt": "1.2",
         "drupal/scheduled_transitions": "1.0.0-rc1",
         "drupal/search_api": "1.11",
+<<<<<<< HEAD
         "drupal/search_api_solr": "3.9",
+=======
+        "drupal/search_api_solr": "3.8",
+>>>>>>> fc283aeb3cc3d38c2348275254424273d99a1764
         "drupal/search_api_attachments": "1.0-beta13",
         "drupal/seckit": "1.1",
         "drupal/shield": "1.2",

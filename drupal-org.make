@@ -151,7 +151,11 @@ projects[search_api][version] = 1.11
 projects[search_api_attachments][type] = module
 projects[search_api_attachments][version] = 1.0-beta13
 projects[search_api_solr][type] = module
+<<<<<<< HEAD
 projects[search_api_solr][version] = 3.9
+=======
+projects[search_api_solr][version] = 3.8
+>>>>>>> fc283aeb3cc3d38c2348275254424273d99a1764
 projects[seckit][type] = module
 projects[seckit][version] = 1.1
 projects[shield][type] = module
