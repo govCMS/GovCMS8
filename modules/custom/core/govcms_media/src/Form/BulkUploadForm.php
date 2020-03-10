@@ -2,6 +2,7 @@
 
 namespace Drupal\govcms_media\Form;
 
+use Drupal\Component\Utility\Environment;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -84,7 +85,7 @@ class BulkUploadForm extends FormBase {
     ];
 
     $variables = [
-      '@max_size' => static::bytesToString(file_upload_max_size()),
+      '@max_size' => static::bytesToString(Environment::getUploadMaxSize()),
       '@extensions' => Element::oxford($extensions),
     ];
     $form['dropzone']['#description'] = $this->t('You can upload as many files as you like. Each file can be up to @max_size in size. The following file extensions are accepted: @extensions', $variables);
@@ -161,7 +162,12 @@ class BulkUploadForm extends FormBase {
         $entity = $this->helper->createFromInput($file);
       }
       catch (IndeterminateBundleException $e) {
-        drupal_set_message('error', (string) $e);
+        if (isset($form['dropzone'])) {
+          $form_state->setError($form['dropzone'], $e->__toString());
+        }
+        else {
+          $this->messenger()->addError($e->__toString()); 
+        }
         continue;
       }
 

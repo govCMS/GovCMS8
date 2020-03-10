@@ -1,7 +1,7 @@
 name:                   GovCMS
 type:                   profile
 description:            'A GovCMS Drupal Distribution for government and the public sector in Australia.'
-core:                   8.x
+core_version_requirement: ^8.8 || ^9
 
 distribution:
   name:                 GovCMS

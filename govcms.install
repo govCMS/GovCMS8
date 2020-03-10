@@ -5,9 +5,9 @@
  * Install, update and uninstall hooks for the govCMS profile.
  */
 
-use Drupal\user\Entity\User;
 use Drupal\user\RoleInterface;
 use Drupal\shortcut\Entity\Shortcut;
+use Drupal\user\UserInterface;
 
 /**
  * Define a default theme constant.
@@ -29,7 +29,7 @@ define('GOVCMS_DEFAULT_ADMIN_THEME', 'adminimal_theme');
 function govcms_install() {
   // Restrict user registration to admin role creation.
   $user_settings = \Drupal::configFactory()->getEditable('user.settings');
-  $user_settings->set('register', USER_REGISTER_ADMINISTRATORS_ONLY)->save(TRUE);
+  $user_settings->set('register', UserInterface::REGISTER_ADMINISTRATORS_ONLY)->save(TRUE);
 
   // Allow all users to use search.
   user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['search content']);

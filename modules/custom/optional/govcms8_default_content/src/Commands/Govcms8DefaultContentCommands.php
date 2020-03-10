@@ -27,7 +27,7 @@ class Govcms8DefaultContentCommands extends DrushCommands {
    */
   public function defaultContentImport() {
     \Drupal::classResolver()->getInstanceFromDefinition(InstallHelper::class)->importContent();
-    drush_log(dt('Imported GovCMS8 default content.'), 'ok');
+    $this->logger()->info(dt('Imported GovCMS8 default content.'));
   }
 
   /**
@@ -39,7 +39,7 @@ class Govcms8DefaultContentCommands extends DrushCommands {
    */
   public function defaultContentRollback() {
     \Drupal::classResolver()->getInstanceFromDefinition(InstallHelper::class)->deleteImportedContent();
-    drush_log(dt('Rolled back GovCMS8 default content.'), 'ok');
+    $this->logger()->info(dt('Rolled back GovCMS8 default content.'));
   }
 
 }

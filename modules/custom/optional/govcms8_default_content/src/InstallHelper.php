@@ -5,7 +5,8 @@ namespace Drupal\govcms8_default_content;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
-use Drupal\Core\Path\AliasManagerInterface;
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\path_alias\AliasManagerInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\file\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -49,6 +50,13 @@ class InstallHelper implements ContainerInjectionInterface {
   protected $state;
 
   /**
+   * File system handler.
+   * 
+   * @var \Drupal\Core\File\FileSystemInterface
+   */
+  protected $fileSystem;
+
+  /**
    * Constructs a new InstallHelper object.
    *
    * @param \Drupal\Core\Path\AliasManagerInterface $aliasManager
@@ -60,11 +68,12 @@ class InstallHelper implements ContainerInjectionInterface {
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
    */
-  public function __construct(AliasManagerInterface $aliasManager, EntityTypeManagerInterface $entityTypeManager, ModuleHandlerInterface $moduleHandler, StateInterface $state) {
+  public function __construct(AliasManagerInterface $aliasManager, EntityTypeManagerInterface $entityTypeManager, ModuleHandlerInterface $moduleHandler, StateInterface $state, FileSystemInterface $fileSys) {
     $this->aliasManager = $aliasManager;
     $this->entityTypeManager = $entityTypeManager;
     $this->moduleHandler = $moduleHandler;
     $this->state = $state;
+    $this->fileSystem = $fileSys;
   }
 
   /**
@@ -329,10 +338,10 @@ class InstallHelper implements ContainerInjectionInterface {
    */
   public function saveFile($file_name) {
     $path = 'public://govcms8-demo';
-    if (file_prepare_directory($path, FILE_CREATE_DIRECTORY)) {
+    if ($this->fileSystem->prepareDirectory($path, FileSystemInterface::CREATE_DIRECTORY)) {
       $source = DRUPAL_ROOT . '/' . drupal_get_path('module', 'govcms8_default_content') . '/import/images/' . $file_name;
       $data = file_get_contents($source);
-      return file_save_data($data, "public://govcms8-demo/" . $file_name, FILE_EXISTS_RENAME);
+      return file_save_data($data, "public://govcms8-demo/" . $file_name, FileSystemInterface::EXISTS_RENAME);
     }
   }
 
@@ -476,7 +485,7 @@ class InstallHelper implements ContainerInjectionInterface {
    */
   protected function fileUnmanagedCopy($path) {
     $filename = basename($path);
-    return file_unmanaged_copy($path, 'public://' . $filename, FILE_EXISTS_REPLACE);
+    return $this->fileSystem->copy($path, 'public://' . $filename, FileSystemInterface::EXISTS_REPLACE);
   }
 
 }
