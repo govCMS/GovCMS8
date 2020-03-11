@@ -28,6 +28,7 @@ dependencies:
   - menu_ui
   - node
   - options
+  - path_alias
   - quickedit
   - rdf
   - responsive_image
