@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.govcms_alert.field_alert_date
+    - field.field.node.govcms_alert.field_alert_display_date
+    - field.field.node.govcms_alert.field_alert_link
+    - field.field.node.govcms_alert.field_alert_message
+    - field.field.node.govcms_alert.field_alert_page_visibility
+    - field.field.node.govcms_alert.field_alert_permanent
+    - field.field.node.govcms_alert.field_alert_type
+    - node.type.govcms_alert
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.govcms_alert.default
+targetEntityType: node
+bundle: govcms_alert
+mode: default
+content:
+  field_alert_display_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: govcms_alert_date
+    third_party_settings: {  }
+  field_alert_link:
+    weight: 5
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_alert_message:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_alert_permanent:
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_alert_type:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_alert_date: true
+  field_alert_page_visibility: true

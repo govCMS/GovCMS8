@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_alert_type_icon
+field_name: field_alert_type_icon
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: exclamation
+      label: 'Exclamation mark'
+    -
+      value: check
+      label: 'Check mark'
+    -
+      value: information
+      label: 'Information mark'
+    -
+      value: question
+      label: 'Question mark'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

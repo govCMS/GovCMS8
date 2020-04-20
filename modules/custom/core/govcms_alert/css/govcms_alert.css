@@ -1,0 +1,122 @@
+.path-admin #govcms-alerts.layout-container {
+  margin: 0;
+}
+#govcms-alerts article.node--type-alert {
+  background: #dc3548;
+  border-bottom: 3px solid #000;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  color: #fff;
+}
+#govcms-alerts article.node--type-alert.alert-type--dark,
+#govcms-alerts article.node--type-alert.alert-type--dark a,
+#govcms-alerts article.node--type-alert.alert-type--dark button {
+  color: #000;
+}
+#govcms-alerts article.node--type-alert.alert-type--dark :focus {
+  outline-color: #000;
+}
+#govcms-alerts article.node--type-alert.alert-type--light,
+#govcms-alerts article.node--type-alert.alert-type--light a,
+#govcms-alerts article.node--type-alert.alert-type--light button {
+  color: #fff;
+}
+#govcms-alerts article.node--type-alert.alert-type--light :focus {
+  outline-color: #fff;
+}
+#govcms-alerts article.node--type-alert .node__content {
+  display: block;
+  position: relative;
+  margin-left: 3em;
+}
+#govcms-alerts article.node--type-alert.icon-none .node__content {
+  margin-left: 1.5em;
+}
+#govcms-alerts article.node--type-alert:not(.icon-none) .node__content:before {
+  display: block;
+  content: ' ';
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: -1.5em;
+  top: 0.25em;
+}
+#govcms-alerts article.node--type-alert.icon-exclamation .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff'%3E%3Cpath d='M14.66 12.316l-5.316-10.633c-.738-1.476-1.946-1.476-2.685 0l-5.317 10.633c-.738 1.477.008 2.684 1.658 2.684h10.002c1.65 0 2.396-1.207 1.658-2.684zm-7.66-8.316h2.002v5h-2.002v-5zm2.252 8.615c0 .344-.281.625-.625.625h-1.25c-.345 0-.626-.281-.626-.625v-1.239c0-.344.281-.625.626-.625h1.25c.344 0 .625.281.625.625v1.239z'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert.alert-type--dark.icon-exclamation .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23000'%3E%3Cpath d='M14.66 12.316l-5.316-10.633c-.738-1.476-1.946-1.476-2.685 0l-5.317 10.633c-.738 1.477.008 2.684 1.658 2.684h10.002c1.65 0 2.396-1.207 1.658-2.684zm-7.66-8.316h2.002v5h-2.002v-5zm2.252 8.615c0 .344-.281.625-.625.625h-1.25c-.345 0-.626-.281-.626-.625v-1.239c0-.344.281-.625.626-.625h1.25c.344 0 .625.281.625.625v1.239z'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert.icon-check .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff'%3E%3Cpath d='M6.464 13.676c-.194.194-.513.194-.707 0l-4.96-4.955c-.194-.193-.194-.513 0-.707l1.405-1.407c.194-.195.512-.195.707 0l2.849 2.848c.194.193.513.193.707 0l6.629-6.626c.195-.194.514-.194.707 0l1.404 1.404c.193.194.193.513 0 .707l-8.741 8.736z'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert.alert-type--dark.icon-check .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23000'%3E%3Cpath d='M6.464 13.676c-.194.194-.513.194-.707 0l-4.96-4.955c-.194-.193-.194-.513 0-.707l1.405-1.407c.194-.195.512-.195.707 0l2.849 2.848c.194.193.513.193.707 0l6.629-6.626c.195-.194.514-.194.707 0l1.404 1.404c.193.194.193.513 0 .707l-8.741 8.736z'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert.icon-information .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23fff' d='M0,7.562l1.114-3.438c2.565,0.906,4.43,1.688,5.59,2.35C6.398,3.553,6.237,1.544,6.22,0.447h3.511 c-0.05,1.597-0.234,3.6-0.558,6.003c1.664-0.838,3.566-1.613,5.714-2.325L16,7.562c-2.05,0.678-4.06,1.131-6.028,1.356 c0.984,0.856,2.372,2.381,4.166,4.575l-2.906,2.059c-0.935-1.274-2.041-3.009-3.316-5.206c-1.194,2.275-2.244,4.013-3.147,5.206 l-2.856-2.059c1.872-2.307,3.211-3.832,4.017-4.575C3.849,8.516,1.872,8.062,0,7.562'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert.alert-type--dark.icon-information .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23000' d='M0,7.562l1.114-3.438c2.565,0.906,4.43,1.688,5.59,2.35C6.398,3.553,6.237,1.544,6.22,0.447h3.511 c-0.05,1.597-0.234,3.6-0.558,6.003c1.664-0.838,3.566-1.613,5.714-2.325L16,7.562c-2.05,0.678-4.06,1.131-6.028,1.356 c0.984,0.856,2.372,2.381,4.166,4.575l-2.906,2.059c-0.935-1.274-2.041-3.009-3.316-5.206c-1.194,2.275-2.244,4.013-3.147,5.206 l-2.856-2.059c1.872-2.307,3.211-3.832,4.017-4.575C3.849,8.516,1.872,8.062,0,7.562'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert.icon-question .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23fff' d='M8.002 1c-3.868 0-7.002 3.134-7.002 7s3.134 7 7.002 7c3.865 0 7-3.134 7-7s-3.135-7-7-7zm3 5c0 .551-.16 1.085-.477 1.586l-.158.22c-.07.093-.189.241-.361.393-.168.148-.35.299-.545.447l-.203.189-.141.129-.096.17-.021.235v.63h-2.001v-.704c.026-.396.078-.73.204-.999.125-.269.271-.498.439-.688l.225-.21-.01-.015.176-.14.137-.128c.186-.139.357-.277.516-.417l.148-.18c.098-.152.168-.323.168-.518 0-.552-.447-1-1-1s-1.002.448-1.002 1h-2c0-1.657 1.343-3 3.002-3 1.656 0 3 1.343 3 3zm-1.75 6.619c0 .344-.281.625-.625.625h-1.25c-.345 0-.626-.281-.626-.625v-1.238c0-.344.281-.625.626-.625h1.25c.344 0 .625.281.625.625v1.238z'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert.alert-type--dark.icon-question .node__content:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23000' d='M8.002 1c-3.868 0-7.002 3.134-7.002 7s3.134 7 7.002 7c3.865 0 7-3.134 7-7s-3.135-7-7-7zm3 5c0 .551-.16 1.085-.477 1.586l-.158.22c-.07.093-.189.241-.361.393-.168.148-.35.299-.545.447l-.203.189-.141.129-.096.17-.021.235v.63h-2.001v-.704c.026-.396.078-.73.204-.999.125-.269.271-.498.439-.688l.225-.21-.01-.015.176-.14.137-.128c.186-.139.357-.277.516-.417l.148-.18c.098-.152.168-.323.168-.518 0-.552-.447-1-1-1s-1.002.448-1.002 1h-2c0-1.657 1.343-3 3.002-3 1.656 0 3 1.343 3 3zm-1.75 6.619c0 .344-.281.625-.625.625h-1.25c-.345 0-.626-.281-.626-.625v-1.238c0-.344.281-.625.626-.625h1.25c.344 0 .625.281.625.625v1.238z'/%3E%3C/svg%3E");
+}
+#govcms-alerts article.node--type-alert .node__content .field {
+  margin-right: 1.5em;
+}
+#govcms-alerts article.node--type-alert .govcms-alert-link a {
+  padding-right: 1.25em;
+  text-decoration: none;
+}
+#govcms-alerts article.node--type-alert .govcms-alert-link a:hover {
+  text-decoration: underline;
+}
+#govcms-alerts article.node--type-alert .govcms-alert-message a {
+  text-decoration: underline;
+}
+#govcms-alerts article.node--type-alert .govcms-alert-message a:hover {
+  text-decoration: none;
+}
+#govcms-alerts article.node--type-alert .node__content button.govcms-alert-close {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  cursor: pointer;
+  position: absolute;
+  float: right;
+  top: 0;
+  right: 1.5em;
+}
+#govcms-alerts article.node--type-alert .node__content button.govcms-alert-close span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+  pointer-events: none;
+}
+#govcms-alerts article.node--type-alert button.govcms-alert-close {
+  width: 1.5em;
+}
+#govcms-alerts article.node--type-alert button.govcms-alert-close:after {
+  content: "+";
+  display: inline-block;
+  font-size: 2em;
+  font-weight: normal;
+  text-align: right;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+}

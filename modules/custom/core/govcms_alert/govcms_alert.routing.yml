@@ -1,0 +1,9 @@
+govcms_alert.govcms_alert_config_form:
+  path: '/admin/config/system/govcms_alert'
+  defaults:
+    _form: '\Drupal\govcms_alert\Form\ConfigForm'
+    _title: 'GovCMS Alert Settings'
+  requirements:
+    _permission: 'administer govcms_alert'
+  options:
+    _admin_route: TRUE

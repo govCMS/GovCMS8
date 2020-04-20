@@ -1,0 +1,49 @@
+name: GovCMS Alert
+description: 'Provides site-wide alerts and announcements.'
+type: module
+package: GovCMS
+core: 8.x
+version: 8.x-1.0
+dependencies:
+  - drupal:datetime
+  - drupal:field
+  - drupal:link
+  - drupal:menu_ui
+  - drupal:node
+  - drupal:path
+  - drupal:rest
+  - drupal:serialization
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:views
+config_devel:
+  install:
+    - core.base_field_override.node.govcms_alert.promote
+    - core.base_field_override.node.govcms_alert.title
+    - core.date_format.govcms_alert_date
+    - core.entity_form_display.node.govcms_alert.default
+    - core.entity_form_display.taxonomy_term.alert_type.default
+    - core.entity_view_display.node.govcms_alert.default
+    - core.entity_view_display.taxonomy_term.alert_type.default
+    - field.field.node.govcms_alert.field_alert_date
+    - field.field.node.govcms_alert.field_alert_display_date
+    - field.field.node.govcms_alert.field_alert_link
+    - field.field.node.govcms_alert.field_alert_message
+    - field.field.node.govcms_alert.field_alert_page_visibility
+    - field.field.node.govcms_alert.field_alert_permanent
+    - field.field.node.govcms_alert.field_alert_type
+    - field.field.taxonomy_term.alert_type.field_alert_type_icon
+    - field.field.taxonomy_term.alert_type.field_alert_type_priority_colour
+    - field.storage.node.field_alert_date
+    - field.storage.node.field_alert_display_date
+    - field.storage.node.field_alert_link
+    - field.storage.node.field_alert_message
+    - field.storage.node.field_alert_page_visibility
+    - field.storage.node.field_alert_permanent
+    - field.storage.node.field_alert_type
+    - field.storage.taxonomy_term.field_alert_type_icon
+    - field.storage.taxonomy_term.field_alert_type_priority_colour
+    - govcms_alert.settings
+    - node.type.govcms_alert
+    - taxonomy.vocabulary.alert_type
+    - views.view.govcms_alerts

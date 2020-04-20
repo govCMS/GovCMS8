@@ -1,0 +1,117 @@
+<?php
+
+/**
+ * @file
+ * Alert module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function govcms_alert_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the govcms_alert module.
+    case 'help.page.govcms_alert':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides ability to display site-wide alert messages and announcements at the top of all pages.') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_create().
+ */
+function govcms_alert_entity_bundle_create($entity_type_id, $bundle) {
+  /** @var \Drupal\Core\Extension\ModuleHandlerInterface $module_handler */
+  $module_handler = \Drupal::service('module_handler');
+
+  if ($entity_type_id == 'node' && $bundle == 'govcms_alert') {
+    try {
+      // Enables Alert content type in editorial workflow.
+      if ($module_handler->moduleExists('workflows')) {
+        /** @var \Drupal\workflows\WorkflowInterface $editorial_workflow */
+        $editorial_workflow = \Drupal::entityTypeManager()->getStorage('workflow')
+          ->load('editorial');
+        if ($editorial_workflow) {
+          $editorial_workflow->getTypePlugin()
+            ->addEntityTypeAndBundle('node', 'govcms_alert');
+          $editorial_workflow->save();
+        }
+      }
+
+      // Enables Scheduled Transition for Alert content type.
+      if ($module_handler->moduleExists('scheduled_transitions')) {
+        $transitions_settings = \Drupal::configFactory()
+          ->getEditable('scheduled_transitions.settings');
+        $bundles = $transitions_settings->get('bundles');
+        $bundles[] = ['entity_type' => 'node', 'bundle' => 'govcms_alert'];
+        $transitions_settings->set('bundles', $bundles);
+        $transitions_settings->save();
+      }
+    }
+    catch (Exception $exception) {
+      watchdog_exception('govcms_alert', $exception);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function govcms_alert_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() == 'node' && $bundle == 'govcms_alert') {
+    if (isset($fields['field_alert_message'])) {
+      $fields['field_alert_message']->addConstraint('HtmlNotEmpty', []);
+    }
+  }
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function govcms_alert_page_top(array &$page_top) {
+  if (!\Drupal::config('govcms_alert.settings')->get('enable')) {
+    return;
+  }
+
+  // Do not show alerts on admin pages.
+  if (\Drupal::service('router.admin_context')->isAdminRoute() &&
+    !\Drupal::config('govcms_alert.settings')->get('show_on_admin')) {
+    return;
+  }
+
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  // Retrieve the endpoint of GovCMS Alert Rest.
+  $endpoint = '/govcms-alerts?_format=json';
+  try {
+    /** @var \Drupal\views\Entity\View $alert_view */
+    $alert_view = $entity_type_manager->getStorage('view')
+      ->load('govcms_alerts');
+    if ($alert_view) {
+      $display = $alert_view->getDisplay('rest_export_alerts');
+      if (!empty($display['display_options']['path'])) {
+        $endpoint = '/' . $display['display_options']['path'] . '?_format=json';
+      }
+    }
+  }
+  catch (Exception $exception) {
+    watchdog_exception('govcms_alert', $exception);
+  }
+
+  $page_top['govcms_alerts'] = [
+    '#markup' => '<div id="govcms-alerts" class="layout-container au-body" data-endpoint="' . $endpoint . '"></div>',
+    '#attached' => [
+      'library' => [
+        'govcms_alert/govcms_alert',
+      ],
+    ],
+    '#cache' => [
+      'tags' => ['config:views.view.govcms_alerts'],
+    ],
+  ];
+}

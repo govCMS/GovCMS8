@@ -1,0 +1,6 @@
+govcms_alert.govcms_alert_config_form:
+  title: 'GovCMS Alert Settings'
+  route_name: govcms_alert.govcms_alert_config_form
+  description: 'Manage settings for GovCMS Alerts'
+  parent: system.admin_config_system
+  weight: 99

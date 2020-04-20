@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alert_page_visibility
+    - node.type.govcms_alert
+id: node.govcms_alert.field_alert_page_visibility
+field_name: field_alert_page_visibility
+entity_type: node
+bundle: govcms_alert
+label: 'Page Visibility'
+description: 'Specify pages by using their paths to show this alert. Enter one path per line. The ''*'' character is a wildcard. An example path is ''/user/*'' for every user page. ''/'' is the home page.<br/> Leave this field empty to display the alert on all pages.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

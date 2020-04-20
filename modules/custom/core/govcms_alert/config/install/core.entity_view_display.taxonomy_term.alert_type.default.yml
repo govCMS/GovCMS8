@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.alert_type.field_alert_type_icon
+    - field.field.taxonomy_term.alert_type.field_alert_type_priority_colour
+    - taxonomy.vocabulary.alert_type
+  module:
+    - options
+    - text
+third_party_settings: {  }
+id: taxonomy_term.alert_type.default
+targetEntityType: taxonomy_term
+bundle: alert_type
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_alert_type_icon:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_alert_type_priority_colour:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Alert installation.
+ */
+
+use Drupal\taxonomy\Entity\Term;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ */
+function govcms_alert_install() {
+  try {
+    drupal_flush_all_caches();
+
+    // Create default alert types.
+    $types = [
+      'Emergency',
+      'Announcement',
+    ];
+    foreach ($types as $weight => $name) {
+      $type = Term::create([
+        'name' => $name,
+        'weight' => $weight,
+        'vid' => 'alert_type',
+      ]);
+      $type->save();
+    }
+
+    // Set default permissions.
+    $role_permissions = [
+      'site_administrator' => [
+        'administer govcms_alert',
+        'create terms in alert_type',
+        'delete terms in alert_type',
+        'edit terms in alert_type',
+        'create govcms_alert content',
+        'delete any govcms_alert content',
+        'delete own govcms_alert content',
+        'delete govcms_alert revisions',
+        'edit any govcms_alert content',
+        'edit own govcms_alert content',
+        'revert govcms_alert revisions',
+        'view govcms_alert revisions',
+        'add scheduled transitions node govcms_alert',
+      ],
+    ];
+
+    foreach ($role_permissions as $rid => $permissions) {
+      /** @var \Drupal\user\RoleInterface $role */
+      $role = Role::load($rid);
+      if ($role) {
+        foreach ($permissions as $permission) {
+          $role->grantPermission($permission);
+        }
+        $role->save();
+      }
+    }
+  }
+  catch (Exception $exception) {
+    watchdog_exception('govcms_alert', $exception);
+  }
+}

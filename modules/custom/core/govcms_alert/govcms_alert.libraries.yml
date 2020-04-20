@@ -1,0 +1,12 @@
+govcms_alert:
+  version: 1.x
+  css:
+    theme:
+      css/govcms_alert.css: {}
+  js:
+    js/govcms_alert.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.cookie
+    - core/jquery.once

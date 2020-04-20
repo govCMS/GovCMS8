@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Alert Type'
+vid: alert_type
+description: 'Provides the type and priority of site-wide Alerts.'
+weight: 0

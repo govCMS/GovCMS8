@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alert_permanent
+    - node.type.govcms_alert
+id: node.govcms_alert.field_alert_permanent
+field_name: field_alert_permanent
+entity_type: node
+bundle: govcms_alert
+label: Permanent
+description: 'Permanent alerts always display even if their alert date does not fall within 7 days. Alerts with future date will not show.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

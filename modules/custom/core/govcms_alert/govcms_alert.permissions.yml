@@ -1,0 +1,3 @@
+administer govcms_alert:
+  title: 'Administer GovCMS Alert settings'
+  restrict access: true

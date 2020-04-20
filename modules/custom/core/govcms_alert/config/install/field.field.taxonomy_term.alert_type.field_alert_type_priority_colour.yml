@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_alert_type_priority_colour
+    - taxonomy.vocabulary.alert_type
+id: taxonomy_term.alert_type.field_alert_type_priority_colour
+field_name: field_alert_type_priority_colour
+entity_type: taxonomy_term
+bundle: alert_type
+label: 'Priority Colour'
+description: 'If set, this value will override the default colour defined in front-end theme.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string
