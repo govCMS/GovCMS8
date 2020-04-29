@@ -1,3 +1,6 @@
+.govcms-alerts {
+  position: relative;
+}
 .path-admin .govcms-alerts.layout-container {
   margin: 0;
 }
