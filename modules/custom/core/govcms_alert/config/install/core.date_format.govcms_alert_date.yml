@@ -4,4 +4,4 @@ dependencies: {  }
 id: govcms_alert_date
 label: 'Alert date'
 locked: false
-pattern: d/m/Y
+pattern: d M Y

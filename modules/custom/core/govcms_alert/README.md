@@ -9,14 +9,17 @@ The GovCMS Alert module provides the site-wide alert messages and announcements.
       * Show on Administration Pages: tick to display the site-wide alerts on
       backend admin pages.
   3. Manage Alert Type:
-      * Navigate to Structure > Taxonomy > Alert Type (`/admin/structure/taxonomy/manage/alert_type/overview`)
-      * Reorder the terms to set their priority.
+      * Navigate to Structure > Taxonomy > Alert Type (`/admin/structure/taxonomy/manage/alert_type/overview`)      
       * Create/edit a term:
           + Override the default background colour with a hexa colour code in
           the Priority Colour field, eg. `#ffff00` for yellow background. By
           default, the frontend styling will determine the background colour
           and choose either white or black text colour to maintain the contrast.
           + Optionally, choose an Alert Icon.
+      * If no weight value is provided when creating an Alert Type (in the 
+      collapsed Relations fieldset), all types will have the same default 
+      weighting of zero.
+      * Reorder the terms to set their priority (weight).
   4. Create an Alert content:
       * Navigate to Content > Add content > Alert (`/node/add/govcms_alert`)
       * Provide an Admin Title

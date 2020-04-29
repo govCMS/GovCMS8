@@ -104,7 +104,7 @@ function govcms_alert_page_top(array &$page_top) {
   }
 
   $page_top['govcms_alerts'] = [
-    '#markup' => '<div id="govcms-alerts" class="layout-container au-body" data-endpoint="' . $endpoint . '"></div>',
+    '#markup' => '<div class="govcms-alerts layout-container au-body au-grid" data-alert-endpoint="' . $endpoint . '"></div>',
     '#attached' => [
       'library' => [
         'govcms_alert/govcms_alert',
