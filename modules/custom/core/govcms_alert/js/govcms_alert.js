@@ -149,7 +149,7 @@
 
               $alert.appendTo($placeholder);
             }
-            Drupal.attachBehaviors();
+            Drupal.behaviors.govcmsAlertsRestBlock.attach(context, settings);
           }
         });
       });
