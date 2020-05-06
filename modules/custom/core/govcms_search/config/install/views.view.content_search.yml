@@ -36,7 +36,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Search
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -62,9 +62,24 @@ display:
             previous: ‹‹
             next: ››
       style:
-        type: default
+        type: html_list
+        options:
+          row_class: views-row
+          default_row_class: true
+          uses_fields: false
+          type: ul
+          wrapper_class: views-list
+          class: ''
       row:
-        type: fields
+        type: search_api
+        options:
+          view_modes:
+            'entity:node':
+              govcms_blog_article: search
+              govcms_event: search
+              govcms_foi: search
+              govcms_news_and_media: search
+              govcms_standard_page: search
       fields:
         title:
           id: title
@@ -186,7 +201,7 @@ display:
           click_sort_column: summary
           type: text_summary_or_trimmed
           settings:
-            trim_length: 600
+            trim_length: 160
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -229,6 +244,8 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              administrator: '0'
+            placeholder: 'What are you looking for?'
           is_grouped: false
           group_info:
             label: ''
@@ -263,6 +280,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      css_class: 'views--layout views--layout--full-width'
     cache_metadata:
       max-age: -1
       contexts:
@@ -280,6 +298,7 @@ display:
     display_options:
       display_extenders: {  }
       path: search
+      exposed_block: true
     cache_metadata:
       max-age: -1
       contexts:
