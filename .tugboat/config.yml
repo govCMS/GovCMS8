@@ -1,5 +1,8 @@
 services:
 
+  solr:
+    image: govcmsextras/solr-tugboat:7.7.3-d8
+
   mysql:
     image: tugboatqa/mysql:5
 
