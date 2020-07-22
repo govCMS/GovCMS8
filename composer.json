@@ -25,7 +25,6 @@
         "bower-asset/chosen": "1.8.7",
         "bower-asset/dropzone": "5.5.0",
         "cweagans/composer-patches": "^1.6",
-        "drupal-composer/drupal-scaffold": "^2.4",
         "drupal/admin_toolbar": "2.0",
         "drupal/adminimal_admin_toolbar": "1.9.0",
         "drupal/adminimal_theme": "1.4",
@@ -117,15 +116,6 @@
         "phing/phing": "^2.16"
     },
     "extra": {
-        "drupal-scaffold": {
-            "initial": {
-                "sites/default/default.services.yml": "sites/default/services.yml",
-                "sites/default/default.settings.php": "sites/default/settings.php"
-            },
-            "excludes": [
-                "sites/development.services.yml"
-            ]
-        },
         "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
@@ -199,10 +189,6 @@
         "drush/drush": "<8.1.10"
     },
     "scripts": {
-        "post-install-cmd": [
-            "@composer drupal-scaffold"
-        ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "nuke": "rm -r -f composer.lock bin app vendor"
     },
     "suggest": {
