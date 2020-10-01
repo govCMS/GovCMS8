@@ -77,6 +77,6 @@ function govcms_field_widget_form_alter(&$element, FormStateInterface $form_stat
  */
 function govcms_field_widget_multivalue_form_alter(&$elements, FormStateInterface $form_state, $context) {
   // Allow theme implements hook_field_widget_multivalue_form_alter
-  // to improve edutor experience with admin theme.
+  // to improve editor experience with admin theme.
   \Drupal::theme()->alter(['field_widget_multivalue_form'], $elements, $form_state, $context);
 }
