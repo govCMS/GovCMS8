@@ -93,7 +93,7 @@
         "drupal/restui": "1.16.0",
         "drupal/robotstxt": "1.4",
         "drupal/scheduled_transitions": "2.0",
-        "drupal/search_api": "1.17",
+        "drupal/search_api": "1.18",
         "drupal/search_api_solr": "3.9",
         "drupal/search_api_attachments": "1.0-beta16",
         "drupal/seckit": "1.1",
