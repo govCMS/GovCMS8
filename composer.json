@@ -141,7 +141,7 @@
         "enable-patching": true,
         "patches": {
             "drupal/admin_toolbar": {
-                "Vertical tab display bug after page reload - https://www.drupal.org/project/admin_toolbar/issues/3154104": "https://www.drupal.org/files/issues/2020-06-23/admin_toolbar-vertical-display-fix-3154104-2-D8.patch" 
+                "Vertical tab display bug after page reload - https://www.drupal.org/project/admin_toolbar/issues/3154104": "https://www.drupal.org/files/issues/2020-06-23/admin_toolbar-vertical-display-fix-3154104-2-D8.patch"
             },
             "drupal/config_ignore": {
                 "Offset error within IgnoreFilter::activeReadMultiple() - https://www.drupal.org/project/config_ignore/issues/2972302": "https://www.drupal.org/files/issues/2018-07-31/offset-error-within-2972302-13.patch"
@@ -197,9 +197,12 @@
                 "Create Email one-time-code Validation Plugin & related Setup Plugin - https://www.drupal.org/project/tfa/issues/2930541": "https://www.drupal.org/files/issues/2020-08-12/tfa-2930541-16.patch"
             },
             "drupal/webform": {
-                "Undefined index: messages - https://www.drupal.org/project/webform/issues/3137625" :"https://www.drupal.org/files/issues/2020-05-18/3137625-3.patch",
+                "Undefined index: messages - https://www.drupal.org/project/webform/issues/3137625": "https://www.drupal.org/files/issues/2020-05-18/3137625-3.patch",
                 "Email from name cannot be longer than 128 characters - https://www.drupal.org/project/webform/issues/3142807": "https://www.drupal.org/files/issues/2020-05-26/3142807-9.patch",
                 "Email confirmation clientside validation not working - https://www.drupal.org/project/webform/issues/3138266": "https://www.drupal.org/files/issues/2020-05-20/3138266-5.patch"
+            },
+            "drupal/token": {
+                "token_element_children produce notice on integer keys - https://www.drupal.org/project/token/issues/3154183": "https://www.drupal.org/files/issues/2020-06-23/3154183-2.patch"
             }
         }
     },
