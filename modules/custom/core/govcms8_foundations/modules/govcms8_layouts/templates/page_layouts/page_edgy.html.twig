@@ -16,7 +16,7 @@
   {% if content['#title'] %}
     <h1 class="au-header-heading visually-hidden">{{ content['#title'] }}</h1>
   {% endif %}
-  {% if content.content_top|render|striptags|trim or content.content|render|striptags|trim or content.content_bottom|render|striptags|trim %}
+  {% if content.content_top|render|striptags('<img>')|trim or content.content|render|striptags('<img>')|trim or content.content_bottom|render|striptags('<img>')|trim %}
     <section class="page-layout__content-section">
       {% if content.content_top|render|trim %}
         <div class="row">
@@ -25,14 +25,14 @@
           </div>
         </div>
       {% endif %}
-      {% if content.content|render|striptags|trim %}
+      {% if content.content|render|striptags('<img>')|trim %}
         <div class="row">
           <div class="page-layout__content">
             {{ content.content }}
           </div>
         </div>
       {% endif %}
-      {% if content.content_bottom|render|striptags|trim %}
+      {% if content.content_bottom|render|striptags('<img>')|trim %}
         <div class="row">
           <div class="page-layout__content-bottom">
             {{ content.content_bottom }}
@@ -41,7 +41,7 @@
       {% endif %}
     </section>
   {% endif %}
-  {% if content.footer|render|striptags|trim %}
+  {% if content.footer|render|striptags('<img>')|trim %}
     <section class="page-layout__content-footer-section">
       <div class="row">
         <div class="page-layout__content-footer">
