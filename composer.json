@@ -28,7 +28,7 @@
         "drupal-composer/drupal-scaffold": "^2.4",
         "drupal/admin_toolbar": "2.3",
         "drupal/adminimal_admin_toolbar": "1.11.0",
-        "drupal/adminimal_theme": "1.4",
+        "drupal/adminimal_theme": "1.6",
         "drupal/bigmenu": "2.0.0-rc1",
         "drupal/captcha": "1.1",
         "drupal/chosen": "2.9.0",
