@@ -31,9 +31,6 @@ settings:
       accordion_group:
         weight: 14
         enabled: false
-      colors_modifier:
-        weight: 15
-        enabled: false
       content:
         weight: 16
         enabled: false

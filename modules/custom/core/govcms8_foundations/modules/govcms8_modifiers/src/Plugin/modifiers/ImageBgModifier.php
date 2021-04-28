@@ -7,6 +7,12 @@ use Drupal\modifiers\ModifierPluginBase;
 
 /**
  * Provides a Modifier to set the image background on an element.
+ *
+ * @Modifier(
+ *   id = "image_bg_modifier",
+ *   label = @Translation("Image Background Modifier"),
+ *   description = @Translation("Provides a Modifier to set the image background on an element"),
+ * )
  */
 class ImageBgModifier extends ModifierPluginBase {
 
